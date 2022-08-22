@@ -1,3 +1,4 @@
+import selectImg from '../assets/selectImg.svg'
 export const OPTIONS = [
   '서울',
   '부산',
@@ -20,12 +21,18 @@ export const OPTIONS = [
 
 export const strGrade = (data) => {
   if (data === '1') {
-    return ['좋음', '#03c75a']
+    return ['좋음', 'bg-green-300', 'text-green-300']
   } else if (data === '2') {
-    return ['보통', '#779CFD']
+    return ['보통', 'bg-indigo-300', 'text-indigo-300']
   } else if (data === '3') {
-    return ['나쁨', '#F39233']
+    return ['나쁨', 'bg-yellow-400', 'text-yellow-400']
   } else {
-    return ['매우 나쁨', '#EE4B12']
+    return ['매우 나쁨', 'bg-orange-600', 'text-orange-600']
   }
 }
+
+export const selectStyle = (width) => {
+  return `pt-[0.375] pr-[2.25rem] pb-[0.375rem] pl-[0.75rem] font-normal leading-normal appearance-none border rounded-xl transition bg-white  bg-no-repeat`
+}
+
+export const cls = (...classnames) => classnames.join('')

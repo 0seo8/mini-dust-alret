@@ -4,8 +4,7 @@ import {
   getDustDataStatus,
   getDustDataError,
   fetchDatas,
-} from '../../feature/dustSlice'
-import * as S from './style'
+} from '../feature/dustSlice'
 import Spinner from 'react-bootstrap/Spinner'
 
 function FetchData() {
@@ -20,10 +19,10 @@ function FetchData() {
   }, [isStatus, dispatch])
 
   return (
-    <S.Container>
+    <div className="flex justify-center">
       {isStatus === 'loading' && <Spinner animation="border" />}
       {isStatus === 'failed' && <p>{Error}</p>}
-    </S.Container>
+    </div>
   )
 }
 

@@ -5,14 +5,14 @@ import Tab from './components/Tab'
 import Favorites from './pages/Favorites'
 import MyPlace from './pages/MyPlace'
 import ViewAllPlace from './pages/ViewAllPlace'
-import Container from 'react-bootstrap/Container'
 import './utils/addLocalStoroge'
+import selectImg from './assets/selectImg.svg'
 
 function App() {
   const location = useLocation().pathname
 
   return (
-    <Container>
+    <div className="container">
       <FetchData />
       <SelectBox />
       <Routes>
@@ -22,7 +22,7 @@ function App() {
         <Route path="/*" element={<p>Not Found</p>} />
       </Routes>
       <Tab isActive={location} />
-    </Container>
+    </div>
   )
 }
 

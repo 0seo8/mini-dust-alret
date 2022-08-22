@@ -1,28 +1,23 @@
-import * as S from './style'
-import { OPTIONS } from '../../utils/constants'
+import * as S from './SelectBox/style'
+import { OPTIONS } from '../utils/constants'
 import {
   getGuGunList,
-  getDustDataStatus,
-  getDustDataError,
   fetchDatas,
   filterGuGunDatas,
   chnageSido,
-  sidoName,
-} from '../../feature/dustSlice'
+} from '../feature/dustSlice'
 import { useSelector, useDispatch } from 'react-redux/es/exports'
 import { useLocation } from 'react-router'
+import selectImg from '../assets/selectImg.svg'
 
 function SelectBox() {
   const dispatch = useDispatch()
-  const isStatus = useSelector(getDustDataStatus)
-  const isError = useSelector(getDustDataError)
   const guGunList = useSelector(getGuGunList)
 
   const location = useLocation().pathname
 
   const changeSidoHandler = async (e) => {
     dispatch(chnageSido(e.target.value))
-    console.log('실행?')
     dispatch(fetchDatas(e.target.value))
   }
 
@@ -31,7 +26,7 @@ function SelectBox() {
   }
 
   return (
-    <S.Container>
+    <div className="flex items-center justify-center mt-4">
       {location !== '/favorite' && (
         <S.SelectBox onChange={changeSidoHandler}>
           {OPTIONS.map((sido, index) => (
@@ -52,7 +47,7 @@ function SelectBox() {
             ))}
         </S.SelectBox>
       )}
-    </S.Container>
+    </div>
   )
 }
 
