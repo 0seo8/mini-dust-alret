@@ -5,10 +5,12 @@ import { addMyFavoriteList } from '../../feature/dustSlice'
 import { FaStar, FaRegStar } from 'react-icons/fa'
 import { strGrade } from '../../utils/constants'
 
-function Card({ guGun }) {
+function Card({ guGun, favorite }) {
   const dispatch = useDispatch()
   const datas = useSelector(getSidoDatas)
   const data = datas[guGun]
+
+  console.log('guGun', guGun)
 
   const grade = strGrade(data?.pm10Grade)
   const addToMyFavorite = () => {
@@ -26,7 +28,7 @@ function Card({ guGun }) {
             </S.CardTitle>
 
             <S.Star onClick={addToMyFavorite}>
-              {data.myFavorite ? (
+              {favorite ? (
                 <FaStar size="1.5rem" />
               ) : (
                 <FaRegStar size="1.5rem" />

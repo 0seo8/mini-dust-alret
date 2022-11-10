@@ -45,7 +45,6 @@ export const dustSlice = createSlice({
       state.setCardData = action.payload
     },
     addMyFavoriteList(state, action) {
-      console.log(action.payload)
       state.setSidoDatas[action.payload.stationName].myFavorite =
         !state.setSidoDatas[action.payload.stationName].myFavorite
       state.myFavorite.some(
@@ -65,15 +64,13 @@ export const dustSlice = createSlice({
         state.status = 'loading'
       })
       .addCase(fetchDatas.fulfilled, (state, action) => {
-        let prepare = action.payload
-        prepare = prepare.map((item) => {
-          const myFavorite = state.myFavorite.includes(item.stationName)
-
+        let prepare = action.payload.map((item) => {
           return (item = {
             ...item,
-            myFavorite,
+            myFavorite: false,
           })
         })
+
         const result = prepare.reduce((acc, cur) => {
           return {
             ...acc,

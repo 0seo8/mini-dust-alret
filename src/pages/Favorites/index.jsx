@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Favorite from '../../components/Card/Favorite'
 import * as S from './style'
 
-import { useSelector, useDispatch } from 'react-redux/es/exports'
-import { favoriteArr } from '../../feature/dustSlice'
-
 function Favorites() {
-  const datas = JSON.parse(localStorage.getItem('myFavorite'))
-  console.log(datas, 'hahah')
+  const [datas, setDatas] = useState([])
 
+  useEffect(() => {
+    setDatas(JSON.parse(localStorage.getItem('myFavorite')))
+  }, [])
   return (
-    <>
+    <S.Container>
       {datas &&
         datas.map((item, index) => <Favorite key={index} data={item} />)}
       {datas?.length === 0 && <S.Alret>리스트를 추가해주세요😊</S.Alret>}
-    </>
+    </S.Container>
   )
 }
 
