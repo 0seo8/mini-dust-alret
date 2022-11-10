@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import * as S from './style'
 import { OPTIONS } from '../../utils/constants'
 import {
@@ -48,12 +49,11 @@ function SelectBox() {
           onChange={changeGuGunHandler}
           width="217"
           defaultValue={defaultData}
+          key={defaultData}
         >
           {guGunList &&
-            guGunList.map((gugun, index) => (
-              <option key={index} value={gugun}>
-                {gugun}
-              </option>
+            guGunList?.map((gugun, index) => (
+              <option key={index}>{gugun}</option>
             ))}
         </S.SelectBox>
       )}
