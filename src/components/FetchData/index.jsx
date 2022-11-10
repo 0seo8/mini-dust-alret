@@ -21,7 +21,11 @@ function FetchData() {
 
   return (
     <S.Container>
-      {isStatus === 'loading' && <Spinner animation="border" />}
+      {isStatus === 'loading' && (
+        <S.Loading>
+          <Spinner animation="border" />
+        </S.Loading>
+      )}
       {isStatus === 'failed' && <p>{Error}</p>}
     </S.Container>
   )
