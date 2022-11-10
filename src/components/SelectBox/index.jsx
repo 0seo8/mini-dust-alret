@@ -24,7 +24,6 @@ function SelectBox() {
 
   const changeSidoHandler = async (e) => {
     dispatch(chnageSido(e.target.value))
-    console.log('실행?')
     dispatch(fetchDatas(e.target.value))
   }
 

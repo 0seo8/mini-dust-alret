@@ -1,20 +1,15 @@
 import * as S from './style'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSidoDatas, favoriteArr } from '../../feature/dustSlice'
 import { addMyFavoriteList } from '../../feature/dustSlice'
 import { FaStar, FaRegStar } from 'react-icons/fa'
 import { strGrade } from '../../utils/constants'
 
-function Card({ guGun }) {
+function Favorite({ data }) {
   const dispatch = useDispatch()
-  const datas = useSelector(getSidoDatas)
-  const data = datas[guGun]
-
   const grade = strGrade(data?.pm10Grade)
   const addToMyFavorite = () => {
     dispatch(addMyFavoriteList(data))
   }
-
   return (
     <>
       {data && (
@@ -26,11 +21,7 @@ function Card({ guGun }) {
             </S.CardTitle>
 
             <S.Star onClick={addToMyFavorite}>
-              {data.myFavorite ? (
-                <FaStar size="1.5rem" />
-              ) : (
-                <FaRegStar size="1.5rem" />
-              )}
+              <FaStar size="1.5rem" />
             </S.Star>
           </S.CardHeader>
           <S.CardBody>
@@ -44,4 +35,4 @@ function Card({ guGun }) {
   )
 }
 
-export default Card
+export default Favorite

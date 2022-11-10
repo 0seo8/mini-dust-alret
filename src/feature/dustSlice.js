@@ -45,11 +45,14 @@ export const dustSlice = createSlice({
       state.setCardData = action.payload
     },
     addMyFavoriteList(state, action) {
-      state.setSidoDatas[action.payload].myFavorite =
-        !state.setSidoDatas[action.payload].myFavorite
-      state.myFavorite.includes(action.payload)
+      console.log(action.payload)
+      state.setSidoDatas[action.payload.stationName].myFavorite =
+        !state.setSidoDatas[action.payload.stationName].myFavorite
+      state.myFavorite.some(
+        (item) => item.stationName === action.payload.stationName,
+      )
         ? (state.myFavorite = state.myFavorite.filter(
-            (item) => item !== action.payload,
+            (item) => item.stationName !== action.payload.stationName,
           ))
         : state.myFavorite.push(action.payload)
 
