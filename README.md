@@ -17,6 +17,7 @@
 ⏰ 공공데이터를 이용한 미세먼지 알림이입니다. 
    셀렉박스를 통해 선택한 지역의 미세먼지 정보를 보여줍니다.
 ```
+- 프로젝트는 모바일 사이즈로 만들어졌습니다.
 
 <a href='https://ifh.cc/v-m1W6Nr' target='_blank'><img src='https://ifh.cc/g/m1W6Nr.gif' border='0' width="200"></a>
 
