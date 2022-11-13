@@ -3,7 +3,8 @@
 
 ## 🛠 Tech Stack
 
-<img src="https://img.shields.io/badge/REACT-61DAFB?style=for-the-badge&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/REDUX-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/REACT-61DAFB?style=for-the-badge&logo=React&logoColor=white"/> 
+<img src="https://img.shields.io/badge/REDUX-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/>
 <img src="https://img.shields.io/badge/STYLED-COMPONENTS-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/>
 <img src="https://img.shields.io/badge/VITE-646CFF?style=for-the-badge&logo=Vite&logoColor=white"/>
 <img src="https://img.shields.io/badge/ReactRouter-F7DF1E?style=for-the-badge&logo=redux&logoColor=white"/>
