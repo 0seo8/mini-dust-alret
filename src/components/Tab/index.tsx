@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { GrMapLocation, GrMap, GrStar } from 'react-icons/gr'
 import * as S from './style'
 
-function Tab({ isActive }) {
+const Tab: React.FC<{ isActive: string }> = ({ isActive }) => {
   const navigate = useNavigate()
-
   return (
     <S.Container>
       <S.TabItem onClick={() => navigate('/')} active={isActive === '/'}>

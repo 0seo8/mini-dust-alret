@@ -18,7 +18,7 @@ export const OPTIONS = [
   '세종',
 ]
 
-export const strGrade = (data) => {
+export const strGrade = (data: string) => {
   if (data === '1') {
     return ['좋음', '#03c75a']
   } else if (data === '2') {

@@ -1,11 +1,12 @@
 import * as S from './style'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch } from '../../app/store'
 import { addMyFavoriteList } from '../../feature/dustSlice'
 import { FaStar, FaRegStar } from 'react-icons/fa'
 import { strGrade } from '../../utils/constants'
+import { ISidoData } from '../../model/types'
 
-function Favorite({ data }) {
-  const dispatch = useDispatch()
+const Favorite: React.FC<{ data: ISidoData }> = ({ data }) => {
+  const dispatch = useAppDispatch()
   const grade = strGrade(data?.pm10Grade)
   const addToMyFavorite = () => {
     dispatch(addMyFavoriteList(data))

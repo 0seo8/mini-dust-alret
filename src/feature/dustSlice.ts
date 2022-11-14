@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 const { VITE_SERVICE_KEY } = import.meta.env
 const BASE_URL = 'api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty'
+import { SliceState, IDustData } from '../model/types'
 
 const getParameters = {
   serviceKey: VITE_SERVICE_KEY,
@@ -11,26 +12,26 @@ const getParameters = {
   ver: '1.0',
 }
 
-const initialState = {
-  setSidoDatas: null,
+const initialState: SliceState = {
+  setSidoDatas: [],
   setGuGunList: null,
   setCardData: null,
-  myFavorite: JSON.parse(localStorage.getItem('myFavorite')) || [],
+  myFavorite: JSON.parse(localStorage.getItem('myFavorite')!) || [],
   sidoName: '서울',
   status: 'idle',
-  error: null,
+  error: undefined,
 }
 
-export const fetchDatas = createAsyncThunk(
+export const fetchDatas = createAsyncThunk<IDustData[], string>(
   'dust/fetchDatas',
-  async (sidoName = '서울') => {
+  async (sidoName: string = '서울') => {
     try {
       const { data } = await axios.get(BASE_URL, {
         params: { ...getParameters, sidoName },
       })
       return data['response']['body']['items']
-    } catch (error) {
-      return error.message
+    } catch (error: any) {
+      return error?.message
     }
   },
 )
@@ -45,7 +46,7 @@ export const dustSlice = createSlice({
       state.setCardData = action.payload
     },
     addMyFavoriteList(state, action) {
-      state.setSidoDatas[action.payload.stationName].myFavorite =
+      state.setSidoDatas![action.payload.stationName].myFavorite =
         !state.setSidoDatas[action.payload.stationName].myFavorite
       state.myFavorite.some(
         (item) => item.stationName === action.payload.stationName,
@@ -89,18 +90,6 @@ export const dustSlice = createSlice({
   },
 })
 
-export const getSidoDatas = (state) => state.dust.setSidoDatas
-export const getGuGunList = (state) => state.dust.setGuGunList
-export const selectCardData = (state) => state.dust.setCardData
-export const favoriteArr = (state) => state.dust.myFavorite
-export const sidoName = (state) => state.dust.sidoName
-export const getDustDataStatus = (state) => state.dust.status
-export const getDustDataError = (state) => state.dust.error
-
-export const {
-  filterGuGunDatas,
-  filterGuGunList,
-  addMyFavoriteList,
-  chnageSido,
-} = dustSlice.actions
+export const { filterGuGunDatas, addMyFavoriteList, chnageSido } =
+  dustSlice.actions
 export default dustSlice.reducer

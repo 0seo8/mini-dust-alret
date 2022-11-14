@@ -1,11 +1,10 @@
 import React from 'react'
 import Container from './Container'
 import * as S from './style'
-import { useSelector, useDispatch } from 'react-redux/es/exports'
-import { getGuGunList } from '../../feature/dustSlice'
+import { useAppSelector } from '../../app/store'
 
 function ViewAllPlace() {
-  const datas = useSelector(getGuGunList)
+  const datas = useAppSelector((state) => state.dust.setGuGunList)
 
   return (
     <S.Container>

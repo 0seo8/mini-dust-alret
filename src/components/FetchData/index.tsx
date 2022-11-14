@@ -1,21 +1,17 @@
 import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux/es/exports'
-import {
-  getDustDataStatus,
-  getDustDataError,
-  fetchDatas,
-} from '../../feature/dustSlice'
+import { useAppDispatch, useAppSelector } from '../../app/store'
+import { fetchDatas } from '../../feature/dustSlice'
 import * as S from './style'
 import Spinner from 'react-bootstrap/Spinner'
 
 function FetchData() {
-  const dispatch = useDispatch()
-  const isStatus = useSelector(getDustDataStatus)
-  const Error = useSelector(getDustDataError)
+  const dispatch = useAppDispatch()
+  const isStatus = useAppSelector((state) => state.dust.status)
+  const Error = useAppSelector((state) => state.dust.error)
 
   useEffect(() => {
     if (isStatus === 'idle') {
-      dispatch(fetchDatas())
+      dispatch(fetchDatas('서울'))
     }
   }, [isStatus, dispatch])
 

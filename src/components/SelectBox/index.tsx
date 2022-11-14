@@ -1,41 +1,35 @@
-import { useState, useEffect } from 'react'
 import * as S from './style'
 import { OPTIONS } from '../../utils/constants'
 import {
-  getGuGunList,
-  getDustDataStatus,
-  getDustDataError,
   fetchDatas,
   filterGuGunDatas,
   chnageSido,
-  sidoName,
-  selectCardData,
 } from '../../feature/dustSlice'
-import { useSelector, useDispatch } from 'react-redux/es/exports'
+import { useAppDispatch, useAppSelector } from '../../app/store'
 import { useLocation } from 'react-router'
 
 function SelectBox() {
-  const dispatch = useDispatch()
-  const isStatus = useSelector(getDustDataStatus)
-  const isError = useSelector(getDustDataError)
-  const guGunList = useSelector(getGuGunList)
-  const defaultData = useSelector(selectCardData)
+  const dispatch = useAppDispatch()
+  const isStatus = useAppSelector((state) => state.dust.status)
+  const isError = useAppSelector((state) => state.dust.error)
+  const guGunList = useAppSelector((state) => state.dust.setGuGunList)
+  const defaultData = useAppSelector((state) => state.dust.setCardData)
 
   const location = useLocation().pathname
 
-  const changeSidoHandler = async (e) => {
+  const changeSidoHandler = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(chnageSido(e.target.value))
     dispatch(fetchDatas(e.target.value))
   }
 
-  const changeGuGunHandler = (e) => {
+  const changeGuGunHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(filterGuGunDatas(e.target.value))
   }
 
   return (
     <S.Container>
       {location !== '/favorite' && (
-        <S.SelectBox onChange={changeSidoHandler}>
+        <S.SelectBox onChange={changeSidoHandler} width={''}>
           {OPTIONS.map((sido, index) => (
             <option key={index} value={sido}>
               {sido}
@@ -48,7 +42,7 @@ function SelectBox() {
         <S.SelectBox
           onChange={changeGuGunHandler}
           width="217"
-          defaultValue={defaultData}
+          defaultValue={defaultData!}
           key={defaultData}
         >
           {guGunList &&

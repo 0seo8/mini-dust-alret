@@ -16,7 +16,7 @@ function App() {
       <FetchData />
       <SelectBox />
       <Routes>
-        <Route default path="/" element={<MyPlace />} />
+        <Route path="/" element={<MyPlace />} />
         <Route path="/viewall" element={<ViewAllPlace />} />
         <Route path="/favorite" element={<Favorites />} />
         <Route path="/*" element={<p>Not Found</p>} />

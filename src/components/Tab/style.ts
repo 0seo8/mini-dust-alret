@@ -17,7 +17,7 @@ export const Container = styled.div`
   background: #fff;
 `
 
-export const TabItem = styled.div`
+export const TabItem = styled.div<{ active: boolean }>`
   flex: 1 0 0%;
   display: flex;
   flex-flow: column;

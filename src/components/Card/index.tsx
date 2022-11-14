@@ -1,16 +1,16 @@
 import * as S from './style'
-import { useDispatch, useSelector } from 'react-redux'
-import { getSidoDatas, favoriteArr } from '../../feature/dustSlice'
 import { addMyFavoriteList } from '../../feature/dustSlice'
 import { FaStar, FaRegStar } from 'react-icons/fa'
 import { strGrade } from '../../utils/constants'
+import { useAppSelector, useAppDispatch } from '../../app/store'
 
-function Card({ guGun, favorite }) {
-  const dispatch = useDispatch()
-  const datas = useSelector(getSidoDatas)
+const Card: React.FC<{ guGun: string; favorite: boolean }> = ({
+  guGun,
+  favorite,
+}) => {
+  const dispatch = useAppDispatch()
+  const datas = useAppSelector((state) => state.dust.setSidoDatas)
   const data = datas[guGun]
-
-  console.log('guGun', guGun)
 
   const grade = strGrade(data?.pm10Grade)
   const addToMyFavorite = () => {

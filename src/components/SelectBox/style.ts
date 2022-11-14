@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   margin-top: 1rem;
 `
-export const SelectBox = styled.select`
+export const SelectBox = styled.select<{ width: string }>`
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;

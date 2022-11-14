@@ -6,7 +6,7 @@ function Favorites() {
   const [datas, setDatas] = useState([])
 
   useEffect(() => {
-    setDatas(JSON.parse(localStorage.getItem('myFavorite')))
+    setDatas(JSON.parse(localStorage.getItem('myFavorite')!))
   }, [])
   return (
     <S.Container>

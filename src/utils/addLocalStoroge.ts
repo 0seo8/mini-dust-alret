@@ -1,4 +1,4 @@
-let getFavoriteArr = localStorage.getItem('myFavorite')
+export let getFavoriteArr = localStorage.getItem('myFavorite')
 
 if (!getFavoriteArr) {
   localStorage.setItem('myFavorite', JSON.stringify([]))
